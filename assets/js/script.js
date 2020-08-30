@@ -66,6 +66,22 @@ var loadDaySchedule = function() {
 
 }
 
+// Event Listener for hour save buttons
+$(document).on('click', '.saveBtn', function() {
+    // Get value from corresponding hour text box
+    var hourChanged = $(this).attr("data-hour");
+    var newEventText = $("[id='" + hourChanged + "']").val();
+    
+    // Loop through schedule array and update item based on hour saved
+    for(var i = 0; i < schedule.length; i++) {
+        if(schedule[i].time === hourChanged) {
+            schedule[i].task = newEventText;
+        }
+    }
+
+    // Save item in localStorage
+    localStorage.setItem("schedule", JSON.stringify(schedule));
+});
 
 // Initiate applicaiton and load day schedule
 loadDaySchedule();
