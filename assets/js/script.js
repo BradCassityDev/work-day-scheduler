@@ -19,6 +19,37 @@ var displayCurrentDate = function() {
     $("#currentDay").text(currentDate);
 }
 
+// Check current time against hours and change styles 
+var checkTime = function() {
+    //Update displayed date in Jumbotron
+    displayCurrentDate();
+
+    // Get current time
+    var currentTime = moment(moment(),"h:mm A");
+
+    // Loop through and check current time against time blocks
+    for(var i = 0; i < schedule.length; i++) {
+        // grab time of current schedule item
+        var scheduleTime = moment(schedule[i].time, 'h:mm A');
+        var timeDifference = currentTime.diff(scheduleTime, "minutes");
+        
+        // Remove current classes
+        $("[id='" + schedule[i].time + "']").removeClass("past present future");
+        
+        // Check if the time is past, present, or future
+        if (timeDifference >= 60) {
+            // Time has passed
+            $("[id='" + schedule[i].time + "']").addClass("past");
+        } else if (timeDifference < 60 && timeDifference > 0) {
+            // In current hour
+            $("[id='" + schedule[i].time + "']").addClass("present");
+        } else {
+            // Future hour
+            $("[id='" + schedule[i].time + "']").addClass("future");
+        }
+    }
+}
+
 // display day schedule
 var loadDaySchedule = function() {
     // Update Display Current Date
@@ -64,6 +95,8 @@ var loadDaySchedule = function() {
         $("#schedule-container").append(hourRow);
     }
 
+    // Check times against current time
+    checkTime();
 }
 
 // Event Listener for hour save buttons
