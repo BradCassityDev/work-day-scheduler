@@ -119,3 +119,8 @@ $(document).on('click', '.saveBtn', function() {
 // Initiate applicaiton and load day schedule
 loadDaySchedule();
 
+// Set time interval to check time. Runs every minute
+setInterval(function() {
+    // Check times to adjust styling
+    checkTime();
+},(1000 * 60));
