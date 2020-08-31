@@ -13,6 +13,7 @@ This application was developed to assist individuals with planning out their day
 
 ## Other Infomration:
 GitHub Repository: https://github.com/BradCassityDev/work-day-scheduler
+
 GitHub Published Site: https://bradcassitydev.github.io/work-day-scheduler/
 
 ## Main View: 
