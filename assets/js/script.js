@@ -74,7 +74,7 @@ var loadDaySchedule = function() {
 
         // Text Area
         var description = $("<textarea>");
-        description.addClass("form-control")
+        description.addClass("form-control description")
             .text(schedule[i].task)
             .attr("id", schedule[i].time);
         
@@ -120,7 +120,7 @@ $(document).on('click', '.saveBtn', function() {
 loadDaySchedule();
 
 // Set time interval to check time. Runs every minute
-setInterval(function() {
+/*setInterval(function() {
     // Check times to adjust styling
     checkTime();
-},(1000 * 60));
+},(1000 * 60));*/
